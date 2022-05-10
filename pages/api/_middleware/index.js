@@ -12,7 +12,7 @@ export async function middleware(req, ev) {
     if (pathname.startsWith("/api")) {
 
         if (pathname.startsWith("/api/status")) {
-            const httpStatusCode = Number(pathname.split("/")[2]);
+            const httpStatusCode = Number(pathname.split("/")[3]);
 
             return Number.isInteger(httpStatusCode)
                 ? fetch("https://http.cat/" + httpStatusCode)
@@ -22,13 +22,13 @@ export async function middleware(req, ev) {
 
         if (pathname.startsWith("/api/kancolle/code")) {
         
-            const code = pathname.split("/")[3];
+            const code = pathname.split("/")[4];
             return fetch(`${kancolleBaseUrl}/${code}`);
         }
 
         if (pathname.startsWith("/api/newbarley/code")) {
 
-            const code = pathname.split("/")[3];
+            const code = pathname.split("/")[4];
             return fetch(`${nwebarleyBaseUrl}/${code}`);
         }
     }
